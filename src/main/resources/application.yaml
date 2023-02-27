@@ -1,0 +1,43 @@
+spring.datasource:
+  url: "jdbc:mariadb://165.192.77.187:3306/demo"
+  # 실제 user, password 입력 필요
+  username: "demoUser"
+  password: "p@ssw0rd"
+  driver-class-name: org.mariadb.jdbc.Driver
+
+spring.jpa:
+  hibernate:
+    #    ddl-auto: node
+    show_sql: true
+    naming:
+      implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyComponentPathImpl
+      physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  properties:
+    hibernate:
+      show_sql: true
+      format_sql: true
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    groups-order: DESC
+    operationsSorter: method
+    disable-swagger-default-url: true
+    display-request-duration: true
+  api-docs:
+    path: /api-docs
+  show-actuator: true
+  default-consumes-media-type: application/json
+  default-produces-media-type: application/json
+  paths-to-match:
+    - /api/**
+
+# Actuator 설정
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info
+
+service:
+  user-url: demo-app02
